@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StartMenuScript : MonoBehaviour {
-
-
-
+    
     public void StartButton() {
-
         SceneManager.LoadScene("GameScene");
-
     }
+
+    public void ExitButton() {
+        Application.Quit();
+    }
+    
 }

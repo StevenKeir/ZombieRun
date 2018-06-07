@@ -35,13 +35,13 @@ public class Player : MonoBehaviour {
         switch (posInt)
         {
             case -1:
-                playerIcon.transform.position = new Vector3(-3, 0, 0);
+                playerIcon.transform.position = new Vector3(-2, 0, 0);
                 break;
             case 0:
                 playerIcon.transform.position = new Vector3(0, 0, 0);
                 break;
             case 1:
-                playerIcon.transform.position = new Vector3(3, 0, 0);
+                playerIcon.transform.position = new Vector3(2, 0, 0);
                 break;
         }
 
