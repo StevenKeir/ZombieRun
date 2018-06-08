@@ -13,33 +13,37 @@ public enum SwipeDirecetion
 
 public class Swiper : MonoBehaviour {
 
+    Animator animator;
+
     private static Swiper instance;
     public static Swiper Instance {get {return instance;}}
     public bool playerChop;
 
     public SwipeDirecetion Direction { set; get; }
     private Vector3 touchPos;
-    private float swipeResX = 5.0f;
+    private float swipeResX = 3.0f;
     private float swipeResY = 50.0f;
+    
 
+    const int state_Walk = 0;
+    const int state_Chop = 1;
+    private int currentAnimationState = state_Walk;
 
     private void Start()
     {
         instance = this;
+        animator = this.GetComponent<Animator>();
+        
     }
 
     private void Update()
     {
         Direction = SwipeDirecetion.None;
 
-        if (Input.GetMouseButton(0))
-        {
-            touchPos = Input.mousePosition;
-        }
+        
         if (Input.GetMouseButtonUp(0))
         {
             Vector2 deltaSwipe = touchPos - Input.mousePosition;
-
             if (Mathf.Abs(deltaSwipe.x) > swipeResX)
             {
                 //Swipe on the X axis
@@ -52,17 +56,38 @@ public class Swiper : MonoBehaviour {
                 Direction |= (deltaSwipe.x < 0) ? SwipeDirecetion.Up : SwipeDirecetion.Down;
             }
         }
-        if (Input.GetTouch.Invoke(0))
+        if (Input.GetMouseButton(0))
         {
-            playerChop = true;
+            touchPos = Input.mousePosition;
+            StateChange(state_Chop);
         }
         else
         {
-            playerChop = false;
+            StateChange(state_Walk);
         }
     }
 
-   
+    void StateChange(int state) {
+
+        if (currentAnimationState == state)
+            return;
+
+        switch (state)
+        {
+            case state_Walk:
+                animator.SetInteger("state", state_Walk);
+                break;
+
+            case state_Chop:
+                animator.SetInteger("state", state_Chop);
+                break;
+        }
+                currentAnimationState = state;
+        }
+
+
+    
+
         public bool IsSwiping(SwipeDirecetion dir)
         {
             return (Direction & dir) == dir;
