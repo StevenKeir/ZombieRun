@@ -17,7 +17,7 @@ public class Swiper : MonoBehaviour {
 
     private static Swiper instance;
     public static Swiper Instance {get {return instance;}}
-    public bool playerChop;
+   // public bool playerChop;
 
     public SwipeDirecetion Direction { set; get; }
     private Vector3 touchPos;
@@ -28,11 +28,13 @@ public class Swiper : MonoBehaviour {
     const int state_Walk = 0;
     const int state_Chop = 1;
     private int currentAnimationState = state_Walk;
+    AudioSource audioSound;
 
     private void Start()
     {
         instance = this;
         animator = this.GetComponent<Animator>();
+        audioSound = this.GetComponent<AudioSource>();
         
     }
 
@@ -60,6 +62,16 @@ public class Swiper : MonoBehaviour {
         {
             touchPos = Input.mousePosition;
             StateChange(state_Chop);
+
+            if (audioSound.isPlaying == true)
+            {
+                //Don't play
+            }
+            else
+            {
+                audioSound.Play();
+            }
+            
         }
         else
         {
