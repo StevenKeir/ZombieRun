@@ -5,12 +5,14 @@ using UnityEngine;
 public class HordeSpawn : MonoBehaviour {
 
     public GameObject enemy;
+    public GameObject enemy1;
+    public GameObject enemy2;
     Rigidbody2D OurRigidbody;
     public Vector3 offset;
     public float spawnTime = 2f;
-    public float minX = -500f;
-    public float maxX = 500f;
-    public float yPosition = -400f;
+    public float minX = -10f;
+    public float maxX = 10;
+    public float yPosition = -6f;
 
     //public Vector2 velocity = Vector2.up;
 
@@ -30,15 +32,13 @@ public class HordeSpawn : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-  
         timer = timer - Time.deltaTime;
         
         // Every two seconds
         if (timer <= 0f)
         {
             // Spawn an enemy at a random location.
-            Vector2 position = new Vector2(yPosition, Random.Range(minX, maxX));
-            Instantiate(enemy, position, Quaternion.identity);
+            ZombieSelector();
             timer = spawnTime;
             
  /*           if (score >= 10)
@@ -48,6 +48,26 @@ public class HordeSpawn : MonoBehaviour {
             }*/
         }
 
+    }
+
+   void ZombieSelector ()
+    {
+        int enemySelect = Random.Range(1, 4);
+        if (enemySelect == 1)
+        {
+            Vector2 position = new Vector2(Random.Range(minX, maxX), yPosition);
+            Instantiate(enemy, position, Quaternion.identity);
+        }
+        if (enemySelect == 2)
+        {
+            Vector2 position = new Vector2(Random.Range(minX, maxX), yPosition);
+            Instantiate(enemy1, position, Quaternion.identity);
+        }
+        if (enemySelect == 3)
+        {
+            Vector2 position = new Vector2(Random.Range(minX, maxX), yPosition);
+            Instantiate(enemy2, position, Quaternion.identity);
+        }
     }
 
 }
