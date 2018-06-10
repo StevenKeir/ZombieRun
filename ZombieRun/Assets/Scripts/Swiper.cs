@@ -41,8 +41,8 @@ public class Swiper : MonoBehaviour {
     private void Update()
     {
         Direction = SwipeDirecetion.None;
+        StateChange(state_Walk);
 
-        
         if (Input.GetMouseButtonUp(0))
         {
             Vector2 deltaSwipe = touchPos - Input.mousePosition;
@@ -57,26 +57,26 @@ public class Swiper : MonoBehaviour {
                 //Swipe on the Y axis
                 Direction |= (deltaSwipe.x < 0) ? SwipeDirecetion.Up : SwipeDirecetion.Down;
             }
+
+            if (Mathf.Abs(deltaSwipe.x) <= swipeResX)
+            {
+                StateChange(state_Chop);
+
+                if (audioSound.isPlaying == true)
+                {
+                    //Don't play
+                }
+                else
+                {
+                    audioSound.Play();
+                }
+            }
         }
         if (Input.GetMouseButton(0))
         {
-            touchPos = Input.mousePosition;
-            StateChange(state_Chop);
+            touchPos = Input.mousePosition;  
+        }
 
-            if (audioSound.isPlaying == true)
-            {
-                //Don't play
-            }
-            else
-            {
-                audioSound.Play();
-            }
-            
-        }
-        else
-        {
-            StateChange(state_Walk);
-        }
     }
 
     void StateChange(int state) {
