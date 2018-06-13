@@ -17,56 +17,71 @@ public class HordeFollowPlayer : MonoBehaviour{
     }
 
     // Update is called once per frame
-    void Update () {
-        float step = speed * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position,player.transform.position,step);
+    void Update()
+    {
+
+        float step;
+        step = speed * Time.deltaTime; 
+
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, step);
         SpeedIncrease();
     }
 
   
     void SpeedIncrease ()
     {
-        if (myScoreScript.scoreCounter > 100)
+      /*  if (Input.GetKey(KeyCode.Space))
         {
-            speed = 0.46f;
+            speed = 10;
         }
-        else if (myScoreScript.scoreCounter > 90)
+        else
         {
-            speed = 0.42f;
+        */
+
+            if (myScoreScript.scoreCounter > 100)
+            {
+                speed = 0.46f;
+            }
+            else if (myScoreScript.scoreCounter > 90)
+            {
+                speed = 0.42f;
+            }
+            else if (myScoreScript.scoreCounter > 80)
+            {
+                speed = 0.38f;
+            }
+            else if (myScoreScript.scoreCounter > 70)
+            {
+                speed = 0.34f;
+            }
+            else if (myScoreScript.scoreCounter > 60)
+            {
+                speed = 0.3f;
+            }
+            else if (myScoreScript.scoreCounter > 50)
+            {
+                speed = 0.26f;
+            }
+            else if (myScoreScript.scoreCounter > 40)
+            {
+                speed = 0.22f;
+            }
+            else if (myScoreScript.scoreCounter > 30)
+            {
+                speed = 0.18f;
+            }
+            else if (myScoreScript.scoreCounter > 20)
+            {
+                speed = 0.14f;
+            }
+            else if (myScoreScript.scoreCounter > 10)
+            {
+                speed = 0.1f;
+            }
+            else speed = 0.08f;
+
+
         }
-        else if (myScoreScript.scoreCounter > 80)
-        {
-            speed = 0.38f;
-        }
-        else if (myScoreScript.scoreCounter > 70)
-        {
-            speed = 0.34f;
-        }
-        else if (myScoreScript.scoreCounter > 60)
-        {
-            speed = 0.3f;
-        }
-        else if (myScoreScript.scoreCounter > 50)
-        {
-            speed = 0.26f;
-        }
-        else if (myScoreScript.scoreCounter > 40)
-        {
-            speed = 0.22f;
-        }
-        else if (myScoreScript.scoreCounter > 30)
-        {
-            speed = 0.18f;
-        }
-        else if (myScoreScript.scoreCounter > 20)
-        {
-            speed = 0.14f;
-        }
-        else if (myScoreScript.scoreCounter > 10)
-        {
-            speed = 0.1f;
-        }
-        else speed = 0.08f;
-    }
+    //}
    
 }

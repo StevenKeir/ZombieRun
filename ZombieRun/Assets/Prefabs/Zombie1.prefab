@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212762085159764736}
   - component: {fileID: 95189446507478210}
   - component: {fileID: 114133223156804672}
-  - component: {fileID: 61318699099932352}
-  m_Layer: 0
+  - component: {fileID: 61895362974344760}
+  m_Layer: 8
   m_Name: Zombie1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61318699099932352
+--- !u!61 &61895362974344760
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -52,7 +52,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -66,8 +66,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.37, y: 0.34}
-  m_EdgeRadius: 1
+  m_Size: {x: 0.4, y: 0.3}
+  m_EdgeRadius: 0
 --- !u!95 &95189446507478210
 Animator:
   serializedVersion: 3

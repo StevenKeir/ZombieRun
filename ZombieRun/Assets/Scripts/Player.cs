@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
 
         if (Swiper.Instance.IsSwiping(SwipeDirecetion.Left))
         {
@@ -48,4 +50,19 @@ public class Player : MonoBehaviour {
    
 
 	}
+
+    // Destroy the player when it collides with an enemy.
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        //Debug.Log("collisons with"+other.gameObject.name);
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Zombie"))
+        {
+           // Debug.Log("collison with zombi layer");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        }
+    }
+
+
 }
