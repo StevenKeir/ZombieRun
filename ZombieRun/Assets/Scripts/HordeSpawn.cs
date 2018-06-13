@@ -7,7 +7,6 @@ public class HordeSpawn : MonoBehaviour {
     public GameObject enemy;
     public GameObject enemy1;
     public GameObject enemy2;
-    Rigidbody2D OurRigidbody;
     public Vector3 offset;
     public float spawnTime = 2f;
     public float minX = -10f;
@@ -23,7 +22,6 @@ public class HordeSpawn : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        OurRigidbody = GetComponent<Rigidbody2D>();
       //  OurRigidbody.velocity = velocity;
         timer = spawnTime;
         score = 0;

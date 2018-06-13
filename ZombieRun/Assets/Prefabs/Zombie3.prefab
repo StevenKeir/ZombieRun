@@ -9,20 +9,20 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1363102156784260}
+  m_RootGameObject: {fileID: 1291122728723002}
   m_IsPrefabParent: 1
---- !u!1 &1363102156784260
+--- !u!1 &1291122728723002
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4972709878782042}
-  - component: {fileID: 212145037316101632}
-  - component: {fileID: 95165954044096528}
-  - component: {fileID: 114155578450613152}
-  - component: {fileID: 61127310406763360}
+  - component: {fileID: 4979195639120950}
+  - component: {fileID: 212264244430662590}
+  - component: {fileID: 95150522949688908}
+  - component: {fileID: 114196480263280416}
+  - component: {fileID: 61797996088411534}
   m_Layer: 0
   m_Name: Zombie3
   m_TagString: Untagged
@@ -30,12 +30,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4972709878782042
+--- !u!4 &4979195639120950
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1363102156784260}
+  m_GameObject: {fileID: 1291122728723002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.72, y: -1.9, z: 0}
   m_LocalScale: {x: 3.5615993, y: 3.165477, z: 1}
@@ -43,12 +43,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61127310406763360
+--- !u!61 &61797996088411534
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1363102156784260}
+  m_GameObject: {fileID: 1291122728723002}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -68,13 +68,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.36, y: 0.34}
   m_EdgeRadius: 1
---- !u!95 &95165954044096528
+--- !u!95 &95150522949688908
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1363102156784260}
+  m_GameObject: {fileID: 1291122728723002}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1a83c674b76eb984c8cfe9f3f164ef70, type: 2}
@@ -86,25 +86,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114155578450613152
+--- !u!114 &114196480263280416
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1363102156784260}
+  m_GameObject: {fileID: 1291122728723002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9e5441151e3fb14ea804ef52dacba6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4755932783932496, guid: 721e49ecf04c5f641b65a3774f1d5814, type: 2}
   speed: 0.08
---- !u!212 &212145037316101632
+  myScoreScript: {fileID: 0}
+--- !u!212 &212264244430662590
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1363102156784260}
+  m_GameObject: {fileID: 1291122728723002}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
