@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class HordeFollowPlayer : MonoBehaviour{
 
-    public Transform player;
+    private GameObject player;
     public float speed = 0.08f;
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    // Update is called once per frame
+    void Update () {
         float step = speed * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position,player.position,step);
+        transform.position = Vector2.MoveTowards(transform.position,player.transform.position,step);
     }
 
     /*
