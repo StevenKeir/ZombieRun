@@ -5,6 +5,8 @@ using UnityEngine;
 public class TreeSpawn : MonoBehaviour {
 
     public GameObject Tree;
+    GameObject backGround;
+    ScrollReset resetScript;
     public Vector3 offset;
     public float spawnTime;
     public float yPosition = 6f;
@@ -21,11 +23,15 @@ public class TreeSpawn : MonoBehaviour {
     int currentTreeIndex;
 
     GameObject playerObj;
+    Swiper swiperScript;
 
     // Use this for initialization
     void Start()
     {
         playerObj = GameObject.FindGameObjectWithTag("Player");
+        swiperScript = playerObj.GetComponent<Swiper>();
+        backGround = GameObject.Find("BackGround1");
+        resetScript = backGround.GetComponent<ScrollReset>();
         spawnTime = Random.Range(1f, 4f);
 
     }
@@ -42,7 +48,7 @@ public class TreeSpawn : MonoBehaviour {
         }
         MoveTrees();
 
-        if (Input.GetButtonDown("Jump") && stopTrees)
+        if (swiperScript.playerChop == true && stopTrees)
         {
             DestroyTree();
         }
@@ -57,7 +63,7 @@ public class TreeSpawn : MonoBehaviour {
         myTrees.Remove(myCurrentTree); // remove from list
         Destroy(myCurrentTree); //kill the tree
         stopTrees = false; // make them move again
-
+        resetScript.backgroundSpeed = 1;
     }
 
     void TreeSpawning()
@@ -96,10 +102,11 @@ public class TreeSpawn : MonoBehaviour {
                 if((myCurrentTree.transform.position - playerObj.transform.position).magnitude < 0.25f && myCurrentTree.transform.position.y > playerObj.transform.position.y)
                 {
                     stopTrees = true;
+                    resetScript.backgroundSpeed = 0;
                     //stores which tree stopped you.
                     currentTreeIndex = i;
                 }
-
+              
                 //kills tree when below the camera
                 if (myCurrentTree.transform.position.y <= treeDeathYValue)
                 {
