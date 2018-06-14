@@ -323,7 +323,6 @@ MonoBehaviour:
   spawnTime: 0
   yPosition: 6
   treePosition: 0
-  score: 0
   treeSpeed: 1
   treeDeathYValue: -10
   myTrees: []
@@ -344,8 +343,8 @@ MonoBehaviour:
   enemy2: {fileID: 1291122728723002, guid: d86a25d23ca36ea4583cd22e78400b23, type: 2}
   offset: {x: 0, y: 0, z: 0}
   spawnTime: 2
-  minX: -10
-  maxX: 10
+  minX: -6
+  maxX: 6
   yPosition: -6
   score: 0
 --- !u!4 &542238484
@@ -819,6 +818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreCounter: 0
   scoreText: {fileID: 794772922}
+  time: 0
 --- !u!1 &1481785521
 GameObject:
   m_ObjectHideFlags: 0

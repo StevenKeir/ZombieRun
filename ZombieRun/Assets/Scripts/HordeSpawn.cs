@@ -9,8 +9,8 @@ public class HordeSpawn : MonoBehaviour {
     public GameObject enemy2;
     public Vector3 offset;
     public float spawnTime = 2f;
-    public float minX = -10f;
-    public float maxX = 10;
+    public float minX = -4;
+    public float maxX = 4;
     public float yPosition = -6f;
 
     //public Vector2 velocity = Vector2.up;
