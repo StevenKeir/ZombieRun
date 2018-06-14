@@ -39,11 +39,6 @@ public class HordeSpawn : MonoBehaviour {
             ZombieSelector();
             timer = spawnTime;
             
- /*           if (score >= 10)
-            {
-               OurRigidbody.velocity = new Vector2(0,1.1);
-               spawnTime = 1.8f;
-            }*/
         }
 
     }

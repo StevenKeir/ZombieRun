@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 
     public GameObject playerIcon;
 
+
     [Range(-1, 1)]
     public int posInt = 0;
     

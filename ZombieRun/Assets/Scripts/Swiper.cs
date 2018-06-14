@@ -17,7 +17,7 @@ public class Swiper : MonoBehaviour {
 
     private static Swiper instance;
     public static Swiper Instance {get {return instance;}}
-   // public bool playerChop;
+    public bool playerChop;
 
     public SwipeDirecetion Direction { set; get; }
     private Vector3 touchPos;
@@ -42,6 +42,8 @@ public class Swiper : MonoBehaviour {
     {
         Direction = SwipeDirecetion.None;
         StateChange(state_Walk);
+
+     
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -79,7 +81,7 @@ public class Swiper : MonoBehaviour {
 
     }
 
-    void StateChange(int state) {
+    public void StateChange(int state) {
 
         if (currentAnimationState == state)
             return;
@@ -88,10 +90,12 @@ public class Swiper : MonoBehaviour {
         {
             case state_Walk:
                 animator.SetInteger("state", state_Walk);
+                playerChop = false;
                 break;
 
             case state_Chop:
                 animator.SetInteger("state", state_Chop);
+                playerChop = true;
                 break;
         }
                 currentAnimationState = state;
