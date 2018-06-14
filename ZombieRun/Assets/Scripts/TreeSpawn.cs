@@ -13,7 +13,6 @@ public class TreeSpawn : MonoBehaviour {
 
     //public Vector2 velocity = Vector2.up;
     public int treePosition;
-    public int score;
     public float treeSpeed;
     public float treeDeathYValue;
     float timer = 0f;
@@ -24,6 +23,8 @@ public class TreeSpawn : MonoBehaviour {
 
     GameObject playerObj;
     Swiper swiperScript;
+    GameObject canvas;
+    Score scoreScript;
 
     // Use this for initialization
     void Start()
@@ -32,6 +33,8 @@ public class TreeSpawn : MonoBehaviour {
         swiperScript = playerObj.GetComponent<Swiper>();
         backGround = GameObject.Find("BackGround1");
         resetScript = backGround.GetComponent<ScrollReset>();
+        canvas = GameObject.Find("Canvas");
+        scoreScript = canvas.GetComponent<Score>();
         spawnTime = Random.Range(1f, 4f);
 
     }
@@ -64,25 +67,29 @@ public class TreeSpawn : MonoBehaviour {
         Destroy(myCurrentTree); //kill the tree
         stopTrees = false; // make them move again
         resetScript.backgroundSpeed = 1;
+        scoreScript.time = true;
     }
 
     void TreeSpawning()
     {
-        treePosition = Random.Range(1, 3);
-        if (treePosition == 1)
+        if (!stopTrees)
         {
-            Vector2 position = new Vector2(-2,yPosition);
-            myTrees.Add(Instantiate(Tree, position, Quaternion.identity)as GameObject);
-        }
-        if (treePosition == 2)
-        {
-            Vector2 position = new Vector2(0, yPosition);
-            myTrees.Add(Instantiate(Tree, position, Quaternion.identity) as GameObject);
-        }
-        if (treePosition == 3)
-        {
-            Vector2 position = new Vector2(2, yPosition);
-            myTrees.Add(Instantiate(Tree, position, Quaternion.identity) as GameObject);
+            treePosition = Random.Range(1, 3);
+            if (treePosition == 1)
+            {
+                Vector2 position = new Vector2(-2, yPosition);
+                myTrees.Add(Instantiate(Tree, position, Quaternion.identity) as GameObject);
+            }
+            if (treePosition == 2)
+            {
+                Vector2 position = new Vector2(0, yPosition);
+                myTrees.Add(Instantiate(Tree, position, Quaternion.identity) as GameObject);
+            }
+            if (treePosition == 3)
+            {
+                Vector2 position = new Vector2(2, yPosition);
+                myTrees.Add(Instantiate(Tree, position, Quaternion.identity) as GameObject);
+            }
         }
     }
     
@@ -103,6 +110,7 @@ public class TreeSpawn : MonoBehaviour {
                 {
                     stopTrees = true;
                     resetScript.backgroundSpeed = 0;
+                    scoreScript.time = false;
                     //stores which tree stopped you.
                     currentTreeIndex = i;
                 }
