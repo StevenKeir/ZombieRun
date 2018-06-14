@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour {
 
     public GameObject gameOverBG;
+    public GameObject pauseButton;
     public Text scoreItem;
 
     Score scoreScript;
@@ -21,7 +22,8 @@ public class GameOver : MonoBehaviour {
 
         Time.timeScale = 0;
         gameOverBG.SetActive(true);
-
+        pauseButton.SetActive(false);
+            
 
 	}
 
@@ -29,6 +31,7 @@ public class GameOver : MonoBehaviour {
     {
         SceneManager.LoadScene("GameScene");
         Time.timeScale = 1;
+        pauseButton.SetActive(true);
     }
 
 }
