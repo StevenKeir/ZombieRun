@@ -25,16 +25,7 @@ public class Attackscript : MonoBehaviour {
         if (swipeScript.playerChop == true && treeScript.stopTrees == true)
         {
             treeScript.DestroyTree();
-            resetScript.backgroundSpeed = 0;
         }
-        if (treeScript.stopTrees == true)
-        {
-            resetScript.backgroundSpeed = 0;
-        }else
-        {
-            resetScript.backgroundSpeed = 1;
-        }
-
 
     }
 }
