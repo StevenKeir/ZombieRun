@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour {
 
     public GameObject playerIcon;
-
+    public GameOver gameOverScript;
 
     [Range(-1, 1)]
     public int posInt = 0;
@@ -59,9 +59,9 @@ public class Player : MonoBehaviour {
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Zombie"))
         {
-           // Debug.Log("collison with zombi layer");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+            // Debug.Log("collison with zombi layer");
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            gameOverScript.GameOverScreen();
         }
     }
 

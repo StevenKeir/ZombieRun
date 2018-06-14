@@ -1,16 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour {
 
-	// Use this for initialization
+    public GameObject gameOverBG;
+    public Text scoreItem;
+
+    Score scoreScript;
+    
+
 	void Start () {
-		
+        	
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	
+	public void GameOverScreen () {
+
+        Time.timeScale = 0;
+        gameOverBG.SetActive(true);
+
+
 	}
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene("GameScene");
+        Time.timeScale = 1;
+    }
+
 }
