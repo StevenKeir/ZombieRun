@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pause : MonoBehaviour {
 
     public GameObject pauseButton;
+    public GameObject PlayButton;
     public GameObject Panel;
 
     public void PauseGame()
