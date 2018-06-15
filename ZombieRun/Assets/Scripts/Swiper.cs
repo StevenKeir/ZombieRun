@@ -21,7 +21,7 @@ public class Swiper : MonoBehaviour {
 
     public SwipeDirecetion Direction { set; get; }
     private Vector3 touchPos;
-    private float swipeResX = 1.5f;
+    private float swipeResX = 3.5f;
     private float swipeResY = 50.0f;
     
 

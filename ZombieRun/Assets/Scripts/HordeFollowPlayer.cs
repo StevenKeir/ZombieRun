@@ -7,10 +7,13 @@ public class HordeFollowPlayer : MonoBehaviour{
     private GameObject player;
     public float speed = 0.08f;
     public Score myScoreScript;
+    public Rigidbody2D rb;
+    public TreeSpawn tree;
     
 
     void Start()
     {
+        
         speed = 0.08f;
         player = GameObject.FindGameObjectWithTag("Player");
         myScoreScript = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Score>();
@@ -29,15 +32,7 @@ public class HordeFollowPlayer : MonoBehaviour{
 
   
     void SpeedIncrease ()
-    {
-      /*  if (Input.GetKey(KeyCode.Space))
-        {
-            speed = 10;
-        }
-        else
-        {
-        */
-
+    { 
             if (myScoreScript.scoreCounter > 100)
             {
                 speed = 0.46f;
@@ -79,9 +74,18 @@ public class HordeFollowPlayer : MonoBehaviour{
                 speed = 0.1f;
             }
             else speed = 0.08f;
-
-
         }
-    //}
-   
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("FallenTree"))
+        {
+            //  Debug.Log("HelpME");
+            transform.position = new Vector2(transform.position.x,-5);
+            
+        }
+    }
+
+
 }

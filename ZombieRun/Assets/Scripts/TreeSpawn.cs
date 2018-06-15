@@ -10,7 +10,10 @@ public class TreeSpawn : MonoBehaviour {
     public Vector3 offset;
     public float spawnTime;
     public float yPosition = 6f;
+    public Sprite normalTree;
+    public Sprite fallenTree1;
 
+    private SpriteRenderer sRender;
     //public Vector2 velocity = Vector2.up;
     public int treePosition;
     public float treeSpeed;
@@ -19,6 +22,7 @@ public class TreeSpawn : MonoBehaviour {
 
     public List<GameObject> myTrees;
     public bool stopTrees;
+    public bool fallenTree;
     int currentTreeIndex;
     int treeHealth;
 
@@ -37,7 +41,7 @@ public class TreeSpawn : MonoBehaviour {
         canvas = GameObject.Find("Canvas");
         scoreScript = canvas.GetComponent<Score>();
         spawnTime = Random.Range(0.5f, 3f);
-        treeHealth = Random.Range(2, 4);
+        treeHealth = Random.Range(4, 7);
 
     }
 
@@ -49,8 +53,8 @@ public class TreeSpawn : MonoBehaviour {
         if (spawnTime <= 0f)
         {
             TreeSpawning();
-            spawnTime = Random.Range(0.5f, 3f);
-            treeHealth = Random.Range(2, 4);
+            spawnTime = Random.Range(0.25f, 2.75f);
+            treeHealth = Random.Range(3, 5);
         }
         MoveTrees();
 
@@ -65,14 +69,14 @@ public class TreeSpawn : MonoBehaviour {
         }
 
     }
-
+    
     public void DestroyTree()
     {
-
         //store reference to current tree 
         GameObject myCurrentTree = myTrees[currentTreeIndex];
-        myTrees.Remove(myCurrentTree); // remove from list
-        Destroy(myCurrentTree); //kill the tree
+        myTrees[currentTreeIndex].layer = 10;
+        //myTrees.Remove(myCurrentTree); // remove from list
+        // Destroy(myCurrentTree); //kill the tree
         stopTrees = false; // make them move again
         resetScript.backgroundSpeed = 1;
         scoreScript.time = true;
@@ -82,7 +86,7 @@ public class TreeSpawn : MonoBehaviour {
     {
         if (!stopTrees)
         {
-            treePosition = Random.Range(1, 4);
+            treePosition = Random.Range(1, 6);
             if (treePosition == 1)
             {
                 Vector2 position = new Vector2(-2, yPosition);
@@ -98,16 +102,28 @@ public class TreeSpawn : MonoBehaviour {
                 Vector2 position = new Vector2(2, yPosition);
                 myTrees.Add(Instantiate(Tree, position, Quaternion.identity) as GameObject);
             }
+            if (treePosition == 4)
+            {
+                Vector2 position = new Vector2(4, yPosition);
+                myTrees.Add(Instantiate(Tree, position, Quaternion.identity) as GameObject);
+            }
+            if (treePosition == 5)
+            {
+                Vector2 position = new Vector2(-4, yPosition);
+                myTrees.Add(Instantiate(Tree, position, Quaternion.identity) as GameObject);
+            }
         }
     }
     
-    void MoveTrees()
+   void MoveTrees()
     {
+        
         //do nothing if the trees have stopped
         if (!stopTrees)
         {
             for (int i = 0; i < myTrees.Count; i++)
             {
+               
                 //store the reference to the current tree we are looking at
                 GameObject myCurrentTree = myTrees[i];
                 //move the tree
@@ -132,7 +148,6 @@ public class TreeSpawn : MonoBehaviour {
 
             }
 
-            
         }
     }
 
