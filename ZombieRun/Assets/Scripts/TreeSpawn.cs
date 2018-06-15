@@ -20,6 +20,7 @@ public class TreeSpawn : MonoBehaviour {
     public List<GameObject> myTrees;
     public bool stopTrees;
     int currentTreeIndex;
+    int treeHealth;
 
     GameObject playerObj;
     Swiper swiperScript;
@@ -35,7 +36,8 @@ public class TreeSpawn : MonoBehaviour {
         resetScript = backGround.GetComponent<ScrollReset>();
         canvas = GameObject.Find("Canvas");
         scoreScript = canvas.GetComponent<Score>();
-        spawnTime = Random.Range(1f, 4f);
+        spawnTime = Random.Range(0.5f, 3f);
+        treeHealth = Random.Range(2, 4);
 
     }
 
@@ -47,11 +49,17 @@ public class TreeSpawn : MonoBehaviour {
         if (spawnTime <= 0f)
         {
             TreeSpawning();
-            spawnTime = Random.Range(1f, 4f);
+            spawnTime = Random.Range(0.5f, 3f);
+            treeHealth = Random.Range(2, 4);
         }
         MoveTrees();
 
-        if (swiperScript.playerChop == true && stopTrees)
+        if (swiperScript.playerChop == true)
+        {
+            treeHealth = treeHealth - 1;
+        }
+
+        if (stopTrees && treeHealth <= 0)
         {
             DestroyTree();
         }
@@ -74,7 +82,7 @@ public class TreeSpawn : MonoBehaviour {
     {
         if (!stopTrees)
         {
-            treePosition = Random.Range(1, 3);
+            treePosition = Random.Range(1, 4);
             if (treePosition == 1)
             {
                 Vector2 position = new Vector2(-2, yPosition);
